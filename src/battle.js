@@ -8,72 +8,57 @@ export default class Battle extends Component {
       compPick: '',
       playerScore: 0,
       compScore: 0,
-      round: 0
     }
   }
 getCompPick = () => {
   const choice = ['totodile', 'chikorita', 'cyndaquil']
   this.setState((prevState) => ({
-    ...prevState.state,
+    ...prevState,
     compPick: choice[Math.floor(Math.random()*3)]
   }))
 }
 
 fight = () => {
-  let compPick = this.getCompPick()
-  let playerPick = this.state.playerPick
+  let { playerPick, compPick } = this.state
   if (playerPick === compPick) {
     console.log('Draw');
     
   }
-  else if (playerPick === 'totodile' && compPick === 'cyndaquil'){
+  else if ((playerPick === 'totodile' && compPick === 'cyndaquil') ||
+          (playerPick === 'chikorita' && compPick === 'totodile')  ||
+          (playerPick === 'cyndaquil' && compPick === 'chikorita')){
       this.setState((prevState) => ({
-        playerScore: prevState.playerScore + 1
+        ...prevState, playerScore: prevState.playerScore + 1
       }))
   }
-  else if (playerPick === 'totodile' && compPick === 'chikorita'){
-      this.setState((prevState) => ({
-        compScore: prevState.compScore + 1
-      }))
-  }
-  else if (playerPick === 'chikorita' && compPick === 'cyndaquil'){
-      this.setState((prevState) => ({
-        compScore: prevState.compScore + 1
-      }))
-  }
-  else if (playerPick === 'chikorita' && compPick === 'totodile'){
-      this.setState((prevState) => ({
-        playerScore: prevState.playerScore + 1
-      }))
-  }
-  else if (playerPick === 'cyndaquil' && compPick === 'totodile'){
-      this.setState((prevState) => ({
-        compScore: prevState.compScore + 1
-      }))
-  }
-  else if (playerPick === 'cyndaquil' && compPick === 'chikorita'){
-      this.setState((prevState) => ({
-        playerScore: prevState.playerScore + 1
-      }))
+  else{
+    this.setState((prevState) => ({
+      ...prevState, compScore: prevState.compScore + 1
+    }))
   }
 }
   render() {
+    const { playerPick, playerScore, compScore, compPick } = this.state
     return (
       <>
          <h1>Choose your Pokemon!</h1>
-        Player: { this.state.playerScore } Computer Score: { this.state.compScore }
+        Player: { playerScore } Computer Score: { compScore }
         <button onClick={() => {
-          this.setState(prevState => ({...prevState.state, playerPick: 'totodile', round: prevState.round +1 }));
-          this.fight()
+          this.setState(prevState => ({...prevState, playerPick: 'totodile'}));
+          this.getCompPick()
           }}>Totodile</button>
         <button onClick={() => {
-          this.setState(prevState => ({...prevState.state, playerPick: 'cyndaquil', round: prevState.round +1 }));
-          this.fight()
+          this.setState(prevState => ({...prevState, playerPick: 'cyndaquil'}));
+          this.getCompPick()
           }}>Cyndaquil</button>
         <button onClick={() => {
-          this.setState(prevState => ({...prevState.state, playerPick: 'chikorita', round: prevState.round +1 }));
-          this.fight()
+          this.setState(prevState => ({...prevState, playerPick: 'chikorita'}));
+          this.getCompPick()
           }}>Chikorita</button>
+          <button onClick={() => {this.fight()}}>
+            Start
+          </button>
+          Your Pokemon: { playerPick } Rivals Pokemon: { compPick }
       </>
     );
   }
