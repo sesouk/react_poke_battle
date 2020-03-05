@@ -10,7 +10,7 @@ export default class Battle extends Component {
       rivalScore: 0,
       round: 0,
       winner: '',
-      disable: false,
+      button: '',
     }
   }
 
@@ -21,21 +21,21 @@ checkRound = () => {
       this.setState(prevState => ({
         ...prevState,
         winner: 'You and your rival battle to a stale mate, battle again?',
-        disable: true
+        button: 'disabled'
       }))
     }
     else if (playerScore > rivalScore) {
       this.setState(prevState => ({
         ...prevState,
         winner: 'You defeated your rival in battle, battle again?',
-        disable: true
+        button: 'disabled'
       }))
     }
     else {
       this.setState(prevState => ({
         ...prevState,
         winner: 'You were defeated by your rival in battle, battle again?',
-        disable: true
+        button: 'disabled'
       }))
     }
   }
@@ -70,7 +70,7 @@ fight = () => {
   
 }
   render() {
-    const { playerScore, rivalScore, winner } = this.state
+    const { playerScore, rivalScore, winner, button } = this.state
     return (
       <>
          <h1>Choose your Pokemon!</h1>
@@ -87,7 +87,7 @@ fight = () => {
           this.setState(prevState => ({...prevState, playerPick: 'chikorita'}));
           this.getRivalPick()
           }}>Chikorita</button>
-          <button onClick={() => {
+          <button disabled={ button } onClick={() => {
             this.setState(prevState => ({...prevState, round: prevState.round + 1}), () => {this.checkRound()});
             this.fight()
           }}>
