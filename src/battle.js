@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 export const Battle = props => {
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //     playerPick: '',
-  //     rivalPick: '',
-  //     playerScore: 0,
-  //     rivalScore: 0,
-  //     round: 0,
-  //     winner: '',
-  //     button: '',
-  //   }
-  // }
 
 const [ playerPick, setPlayerPick] = useState('')
 const [ rivalPick, setRivalPick] = useState('')

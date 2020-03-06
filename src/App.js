@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Battle from './battle'
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-       <Battle/>
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div>
+      <Battle/>
+   </div>
+  );
+};
+
+export default App;
