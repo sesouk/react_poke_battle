@@ -1,100 +1,92 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default class Battle extends Component {
-  constructor() {
-    super()
-    this.state = {
-      playerPick: '',
-      rivalPick: '',
-      playerScore: 0,
-      rivalScore: 0,
-      round: 0,
-      winner: '',
-      button: '',
-    }
-  }
+export const Battle = props => {
+  // constructor() {
+  //   super()
+  //   this.state = {
+  //     playerPick: '',
+  //     rivalPick: '',
+  //     playerScore: 0,
+  //     rivalScore: 0,
+  //     round: 0,
+  //     winner: '',
+  //     button: '',
+  //   }
+  // }
 
-checkRound = () => {
-  let { round, playerScore, rivalScore } = this.state
+const [ playerPick, setPlayerPick] = useState('')
+const [ rivalPick, setRivalPick] = useState('')
+const [ playerScore, setPlayerScore ] = useState(0)
+const [ rivalScore, setRivalScore ] = useState(0)
+const [ round, setRound ] = useState(0)
+const [ winner, setWinner ] = useState('')
+const [ button, setButton ] = useState('')
+
+useEffect(() => {
+  checkRound()
+}, [round])
+
+const checkRound = () => {
   if (round === 5) {
     if (playerScore === rivalScore) {
-      this.setState(prevState => ({
-        ...prevState,
-        winner: 'You and your rival battle to a stale mate, battle again?',
-        button: 'disabled'
-      }))
+      setWinner('You and your rival battle to a stale mate, battle again?')
+      setButton('disabled')
     }
     else if (playerScore > rivalScore) {
-      this.setState(prevState => ({
-        ...prevState,
-        winner: 'You defeated your rival in battle, battle again?',
-        button: 'disabled'
-      }))
+      setWinner('You defeated your rival in battle, battle again?')
+      setButton('disabled')
     }
     else {
-      this.setState(prevState => ({
-        ...prevState,
-        winner: 'You were defeated by your rival in battle, battle again?',
-        button: 'disabled'
-      }))
+      setWinner('You were defeated by your rival in battle, battle again?')
+      setButton('disabled')
     }
   }
 }
 
-getRivalPick = () => {
+const getRivalPick = () => {
   const choice = ['totodile', 'chikorita', 'cyndaquil']
-  this.setState((prevState) => ({
-    ...prevState,
-    rivalPick: choice[Math.floor(Math.random()*3)],
-  }))
+  setRivalPick(choice[Math.floor(Math.random()*3)])
 }
 
-fight = () => {
-  let { playerPick, rivalPick } = this.state
+const fight = () => {
   if (playerPick === rivalPick) {
     console.log('Draw');
   }
   else if ((playerPick === 'totodile' && rivalPick === 'cyndaquil') ||
           (playerPick === 'chikorita' && rivalPick === 'totodile')  ||
           (playerPick === 'cyndaquil' && rivalPick === 'chikorita')){
-      this.setState((prevState) => ({
-        ...prevState, playerScore: prevState.playerScore + 1
-      }))
+      setPlayerScore(playerScore + 1)
 
   }
   else{
-    this.setState((prevState) => ({
-      ...prevState, rivalScore: prevState.rivalScore + 1
-    }))
+    setRivalScore(rivalScore + 1)
   }
-  
 }
-  render() {
-    const { playerScore, rivalScore, winner, button } = this.state
     return (
       <>
          <h1>Choose your Pokemon!</h1>
         Player Score: { playerScore } Rival Score: { rivalScore }
         <button onClick={() => {
-          this.setState(prevState => ({...prevState, playerPick: 'totodile'}));
-          this.getRivalPick()
+          setPlayerPick('totodile');
+          getRivalPick()
           }}>Totodile</button>
         <button onClick={() => {
-          this.setState(prevState => ({...prevState, playerPick: 'cyndaquil'}));
-          this.getRivalPick()
+          setPlayerPick('cyndaquil');
+          getRivalPick()
           }}>Cyndaquil</button>
         <button onClick={() => {
-          this.setState(prevState => ({...prevState, playerPick: 'chikorita'}));
-          this.getRivalPick()
+          setPlayerPick('chikorita');
+          getRivalPick()
           }}>Chikorita</button>
           <button disabled={ button } onClick={() => {
-            this.setState(prevState => ({...prevState, round: prevState.round + 1}), () => {this.checkRound()});
-            this.fight()
+            setRound(round + 1); 
+            fight()
           }}>
             Battle
           </button>
           { winner }
       </>
     );
-  }
 }
+
+export default Battle
