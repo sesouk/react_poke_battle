@@ -9,10 +9,19 @@ const [ rivalScore, setRivalScore ] = useState(0)
 const [ round, setRound ] = useState(0)
 const [ winner, setWinner ] = useState('')
 const [ button, setButton ] = useState('')
+const [ battleText, setBattleText ] = useState('')
 
 useEffect(() => {
   checkRound()
 }, [round])
+
+const restart = () => {
+  setRound(0)
+  setWinner('')
+  setButton('')
+  setPlayerScore(0)
+  setRivalScore(0)
+}
 
 const checkRound = () => {
   if (round === 5) {
@@ -38,16 +47,17 @@ const getRivalPick = () => {
 
 const fight = () => {
   if (playerPick === rivalPick) {
-    console.log('Draw');
+    setBattleText(`Your ${playerPick} and Rival's ${rivalPick} were evenly matched!`)
   }
   else if ((playerPick === 'totodile' && rivalPick === 'cyndaquil') ||
           (playerPick === 'chikorita' && rivalPick === 'totodile')  ||
           (playerPick === 'cyndaquil' && rivalPick === 'chikorita')){
-      setPlayerScore(playerScore + 1)
-
-  }
+            setPlayerScore(playerScore + 1)
+            setBattleText(`Your ${playerPick} was super effective against Rival's ${rivalPick}!`)
+          }
   else{
     setRivalScore(rivalScore + 1)
+    setBattleText(`Rival's ${rivalPick} was super effective against your ${playerPick}!`)
   }
 }
     return (
@@ -66,13 +76,15 @@ const fight = () => {
           setPlayerPick('chikorita');
           getRivalPick()
           }}>Chikorita</button>
-          <button disabled={ button } onClick={() => {
-            setRound(round + 1); 
+          { round < 5 ? (<button disabled={ button } onClick={() => {
+            setRound(round + 1) 
             fight()
           }}>
             Battle
-          </button>
-          { winner }
+          </button> ) : (<button onClick={() => {
+            restart()
+          }}>Restart the Battle</button>)}
+          { round < 5 ? ( battleText ) : ( winner ) } 
       </>
     );
 }
