@@ -3,6 +3,7 @@ import totodileProf from './Assets/profile-totodile.png'
 import cyndaquilProf from './Assets/profile-cyndaquil.png'
 import chikoritaProf from './Assets/profile-chikorita.png'
 
+
 export const Battle = props => {
 
 const [ playerPick, setPlayerPick] = useState('')
@@ -16,6 +17,7 @@ const [ battleText, setBattleText ] = useState('')
 
 useEffect(() => {
   checkRound()
+  // eslint-disable-next-line
 }, [round])
 
 const restart = () => {
@@ -64,6 +66,7 @@ const fight = () => {
     setBattleText(`Rival's ${rivalPick} was super effective against your ${playerPick}!`)
   }
 }
+
     return (
       <>
          <h1>Choose your Pokemon!</h1>
@@ -71,15 +74,15 @@ const fight = () => {
         <div onClick={() => {
           setPlayerPick('Totodile');
           getRivalPick()
-          }}><img src={totodileProf} alt='Totodile Profile Picture'/></div>
+          }}><img src={totodileProf} alt='Totodile'/></div>
         <div onClick={() => {
           setPlayerPick('Cyndaquil');
           getRivalPick()
-          }}><img src={cyndaquilProf} alt='Cyndaquil Profile Picture'/></div>
+          }}><img src={cyndaquilProf} alt='Cyndaquil'/></div>
         <div onClick={() => {
           setPlayerPick('Chikorita');
           getRivalPick()
-          }}><img src={chikoritaProf} alt='Chikorita Profile Picture'/></div>
+          }}><img src={chikoritaProf} alt='Chikorita'/></div>
           { round < 5 ? (<button disabled={ button } onClick={() => {
             setRound(round + 1) 
             fight()
