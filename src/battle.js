@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import totodileProf from './Assets/profile-totodile.png'
+import cyndaquilProf from './Assets/profile-cyndaquil.png'
+import chikoritaProf from './Assets/profile-chikorita.png'
 
 export const Battle = props => {
 
@@ -18,6 +21,7 @@ useEffect(() => {
 const restart = () => {
   setRound(0)
   setWinner('')
+  setBattleText('')
   setButton('')
   setPlayerScore(0)
   setRivalScore(0)
@@ -41,7 +45,7 @@ const checkRound = () => {
 }
 
 const getRivalPick = () => {
-  const choice = ['totodile', 'chikorita', 'cyndaquil']
+  const choice = ['Totodile', 'Chikorita', 'Cyndaquil']
   setRivalPick(choice[Math.floor(Math.random()*3)])
 }
 
@@ -49,9 +53,9 @@ const fight = () => {
   if (playerPick === rivalPick) {
     setBattleText(`Your ${playerPick} and Rival's ${rivalPick} were evenly matched!`)
   }
-  else if ((playerPick === 'totodile' && rivalPick === 'cyndaquil') ||
-          (playerPick === 'chikorita' && rivalPick === 'totodile')  ||
-          (playerPick === 'cyndaquil' && rivalPick === 'chikorita')){
+  else if ((playerPick === 'Totodile' && rivalPick === 'Cyndaquil') ||
+          (playerPick === 'Chikorita' && rivalPick === 'Totodile')  ||
+          (playerPick === 'Cyndaquil' && rivalPick === 'Chikorita')){
             setPlayerScore(playerScore + 1)
             setBattleText(`Your ${playerPick} was super effective against Rival's ${rivalPick}!`)
           }
@@ -63,19 +67,19 @@ const fight = () => {
     return (
       <>
          <h1>Choose your Pokemon!</h1>
-        Player Score: { playerScore } Rival Score: { rivalScore }
-        <button onClick={() => {
-          setPlayerPick('totodile');
+        <h3>Score: { playerScore } - { rivalScore }</h3>
+        <div onClick={() => {
+          setPlayerPick('Totodile');
           getRivalPick()
-          }}>Totodile</button>
-        <button onClick={() => {
-          setPlayerPick('cyndaquil');
+          }}><img src={totodileProf} alt='Totodile Profile Picture'/></div>
+        <div onClick={() => {
+          setPlayerPick('Cyndaquil');
           getRivalPick()
-          }}>Cyndaquil</button>
-        <button onClick={() => {
-          setPlayerPick('chikorita');
+          }}><img src={cyndaquilProf} alt='Cyndaquil Profile Picture'/></div>
+        <div onClick={() => {
+          setPlayerPick('Chikorita');
           getRivalPick()
-          }}>Chikorita</button>
+          }}><img src={chikoritaProf} alt='Chikorita Profile Picture'/></div>
           { round < 5 ? (<button disabled={ button } onClick={() => {
             setRound(round + 1) 
             fight()
