@@ -14,6 +14,7 @@ const [ rivalPick, setRivalPick] = useState('')
 const [ playerScore, setPlayerScore ] = useState(0)
 const [ rivalScore, setRivalScore ] = useState(0)
 const [ round, setRound ] = useState(0)
+const [ draw, setDraw ] = useState(0)
 const [ winner, setWinner ] = useState('')
 const [ battleText, setBattleText ] = useState('')
 const [ showBattle, setBattle ] = useState(false)
@@ -31,11 +32,12 @@ const restart = () => {
   setBattleText('')
   setPlayerScore(0)
   setRivalScore(0)
+  setDraw(0)
   setBattle(false)
 }
 
 const checkRound = () => {
-  if (round === 5 && playerPick) {
+  if (round === 5 && playerPick || playerScore >= 3 || rivalScore >= 3) {
     if (playerScore === rivalScore) {
       setWinner('You and your rival battle to a stale mate, battle again?')
     }
@@ -56,6 +58,7 @@ const getRivalPick = () => {
 const fight = () => {
   if ( playerPick ) {
     if (playerPick === rivalPick) {
+      setDraw(draw + 1)
       setBattleText(`Your ${playerPick} and Rival's ${rivalPick} were evenly matched!`)
     }
     else if ((playerPick === 'Totodile' && rivalPick === 'Cyndaquil') ||
@@ -84,7 +87,7 @@ const battleHelper = () => {
       <>
       <header className='head'>
         <h1>Choose your Pokemon!</h1>
-        <h3>Score: { playerScore } - { rivalScore }</h3>
+    <h3>Score: { playerScore } - { rivalScore } - { draw }</h3>
       </header>
       <body className='pokeball'>
           <div className='pokes' onClick={() => {
