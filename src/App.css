@@ -1,3 +1,78 @@
+body {
+  background-image: url('./Assets/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.App {
+  text-align: center;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: .3em;
+}
+
+.pokeball {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-around;
+}
+
+.btn-win {
+  display: grid;
+  grid-template-columns: .3fr;
+  justify-content: center;
+  padding: 1em;
+}
+
+.battle-field {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.battle2 > img {
+  width: 150px;
+  border: none;
+}
+
+.battle1 > img {
+  transform: scaleX(-1);
+  width: 150px;
+  border: none;
+}
+
+.battle2 > img:hover {
+  border: none
+}
+
+.battle1 > img:hover {
+  border: none;
+}
+
+p {
+  padding-top: .2em ;
+}
+
+img {
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
 div > img:hover {
-  width: 90px;
+  border: 2px solid red;
+}
+p {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+button {
+  border: 2px solid black;
+  border-radius: 10px;
+  background: none;
+  font-weight: bold;
 }
