@@ -14,6 +14,7 @@ const [ rivalPick, setRivalPick] = useState('')
 const [ playerScore, setPlayerScore ] = useState(0)
 const [ rivalScore, setRivalScore ] = useState(0)
 const [ round, setRound ] = useState(0)
+const [ draw, setDraw ] = useState(0)
 const [ winner, setWinner ] = useState('')
 const [ battleText, setBattleText ] = useState('')
 const [ showBattle, setBattle ] = useState(false)
@@ -31,12 +32,14 @@ const restart = () => {
   setBattleText('')
   setPlayerScore(0)
   setRivalScore(0)
+  setDraw(0)
   setBattle(false)
 }
 
 const checkRound = () => {
   if (round === 5 && playerPick) {
     if (playerScore === rivalScore) {
+      setDraw(draw + 1)
       setWinner('You and your rival battle to a stale mate, battle again?')
     }
     else if (playerScore > rivalScore) {
