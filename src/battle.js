@@ -75,7 +75,6 @@ const fight = () => {
 }
 
 const battleHelper = () => {
-  setPlayerPick('Totodile');
   getRivalPick()
   setBattle(false)
   setBattleText('')
@@ -89,12 +88,15 @@ const battleHelper = () => {
       </header>
       <body className='pokeball'>
           <div className='pokes' onClick={() => {
+            setPlayerPick('Totodile');
             battleHelper()
             }}><img src={totodileProf} alt='Totodile'/></div>
           <div className='pokes' onClick={() => {
+            setPlayerPick('Cyndaquil');
             battleHelper()
             }}><img src={cyndaquilProf} alt='Cyndaquil'/></div>
           <div className='pokes' onClick={() => {
+            setPlayerPick('Chikorita');
             battleHelper()
             }}><img src={chikoritaProf} alt='Chikorita'/></div>
       </body>
