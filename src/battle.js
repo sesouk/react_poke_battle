@@ -39,7 +39,6 @@ const restart = () => {
 const checkRound = () => {
   if (round === 5 && playerPick) {
     if (playerScore === rivalScore) {
-      setDraw(draw + 1)
       setWinner('You and your rival battle to a stale mate, battle again?')
     }
     else if (playerScore > rivalScore) {
@@ -59,6 +58,7 @@ const getRivalPick = () => {
 const fight = () => {
   if ( playerPick ) {
     if (playerPick === rivalPick) {
+      setDraw(draw + 1)
       setBattleText(`Your ${playerPick} and your Rival's ${rivalPick} were evenly matched!`)
     }
     else if ((playerPick === 'Totodile' && rivalPick === 'Cyndaquil') ||
