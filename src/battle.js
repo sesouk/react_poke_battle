@@ -59,7 +59,7 @@ const getRivalPick = () => {
 const fight = () => {
   if ( playerPick ) {
     if (playerPick === rivalPick) {
-      setBattleText(`Your ${playerPick} and Rival's ${rivalPick} were evenly matched!`)
+      setBattleText(`Your ${playerPick} and your Rival's ${rivalPick} were evenly matched!`)
     }
     else if ((playerPick === 'Totodile' && rivalPick === 'Cyndaquil') ||
             (playerPick === 'Chikorita' && rivalPick === 'Totodile')  ||
