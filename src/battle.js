@@ -87,7 +87,7 @@ const battleHelper = () => {
       <>
       <header className='head'>
         <h1>Choose your Pokemon!</h1>
-        <h3>Score: { playerScore } - { rivalScore }</h3>
+    <h3>Score: { playerScore } - { rivalScore } - { draw }</h3>
       </header>
       <body className='pokeball'>
           <div className='pokes' onClick={() => {
