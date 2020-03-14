@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react_poke_battle/static/css/main.94961556.chunk.css",
-    "main.js": "/react_poke_battle/static/js/main.ecaf1173.chunk.js",
-    "main.js.map": "/react_poke_battle/static/js/main.ecaf1173.chunk.js.map",
+    "main.js": "/react_poke_battle/static/js/main.fc5a8510.chunk.js",
+    "main.js.map": "/react_poke_battle/static/js/main.fc5a8510.chunk.js.map",
     "runtime-main.js": "/react_poke_battle/static/js/runtime-main.e5cba462.js",
     "runtime-main.js.map": "/react_poke_battle/static/js/runtime-main.e5cba462.js.map",
     "static/js/2.69f711e4.chunk.js": "/react_poke_battle/static/js/2.69f711e4.chunk.js",
     "static/js/2.69f711e4.chunk.js.map": "/react_poke_battle/static/js/2.69f711e4.chunk.js.map",
     "index.html": "/react_poke_battle/index.html",
-    "precache-manifest.97e5ef1ce12eee416af6f76f785b157e.js": "/react_poke_battle/precache-manifest.97e5ef1ce12eee416af6f76f785b157e.js",
+    "precache-manifest.436bfee69ad951a7be195231c95bb8a9.js": "/react_poke_battle/precache-manifest.436bfee69ad951a7be195231c95bb8a9.js",
     "service-worker.js": "/react_poke_battle/service-worker.js",
     "static/css/main.94961556.chunk.css.map": "/react_poke_battle/static/css/main.94961556.chunk.css.map",
     "static/js/2.69f711e4.chunk.js.LICENSE.txt": "/react_poke_battle/static/js/2.69f711e4.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.e5cba462.js",
     "static/js/2.69f711e4.chunk.js",
     "static/css/main.94961556.chunk.css",
-    "static/js/main.ecaf1173.chunk.js"
+    "static/js/main.fc5a8510.chunk.js"
   ]
 }
