@@ -59,17 +59,17 @@ const fight = () => {
   if ( playerPick ) {
     if (playerPick === rivalPick) {
       setDraw(draw + 1)
-      setBattleText(`Your ${playerPick} and your Rival's ${rivalPick} were evenly matched!`)
+      setBattleText(`Your ${playerPick} and your rival's ${rivalPick} were evenly matched!`)
     }
     else if ((playerPick === 'Totodile' && rivalPick === 'Cyndaquil') ||
             (playerPick === 'Chikorita' && rivalPick === 'Totodile')  ||
             (playerPick === 'Cyndaquil' && rivalPick === 'Chikorita')){
               setPlayerScore(playerScore + 1)
-              setBattleText(`Your ${playerPick} was super effective against your Rival's ${rivalPick}!`)
+              setBattleText(`Your ${playerPick} was super effective against your rival's ${rivalPick}!`)
             }
     else{
       setRivalScore(rivalScore + 1)
-      setBattleText(`Your ${playerPick} was weak against your Rival's ${rivalPick}!`)
+      setBattleText(`Your ${playerPick} was weak against your rival's ${rivalPick}!`)
     }
   } else {
     setWinner('No Pokemon was chosen, restart the battle')
