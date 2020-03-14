@@ -1,6 +1,6 @@
 ## React Poke Battle
 
-This Web App was made to learn the basic functionality of React Hooks and can be found live [Here](https://sesouk.github.io/react_poke_battle/)
+This Web App was made to learn the basic functionality of React Hooks and can be found live [here](https://sesouk.github.io/react_poke_battle/)
 
 ## Design
 This game was designed to be played on mobile but is fully responsive utilizing CSS Grid.
